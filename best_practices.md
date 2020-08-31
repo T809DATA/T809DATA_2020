@@ -5,7 +5,7 @@ comes to solving home assignments.
 The assignments in the course are computer assignments and require at least some foundational knowledge in Python.
 All the assignments are written for Python. Importantly, we will be using the Scikit-Learn Python package a lot.
 We recommend using virtual environments (see below) for this. We furthermore recommend using Visual Studio Code (VS code)
-as a text editor for the course. If you are more familar with other text editors (e.g. PyCharm, Atom, vi, etc) feel free to
+as a text editor for the course. If you are more familiar with other text editors (e.g. PyCharm, Atom, vi, etc) feel free to
 choose the tool you are most comfortable with.
 
 ## Scikit-learn
