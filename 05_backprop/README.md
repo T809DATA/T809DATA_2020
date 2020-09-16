@@ -44,8 +44,8 @@ Write a function `y, z0, z1, a1, a2 = ffnn(x, M, K, W1, W2)` where:
 * `W1` is a $((D+1)\times M)$ matrix and `W2` is a $(M+1)\times K$ matrix. (the `+1` are for the bias weights)
 * `a1` is the input vector of the hidden layer of size $(1\times M)$ (needed for backprop).
 * `a2` is the input vector of the output layer of size $(1\times K)$ (needed for backprop).
-* `z0` is the input pattern of size $(1\times D)$, (this is just `x` with `1.0` inserted at the beginning to match the bias weight).
-* `z1` is the output vector of the hidden layer of size $(1\times M)$ (needed for backprop).
+* `z0` is the input pattern of size $(1\times (D+1))$, (this is just `x` with `1.0` inserted at the beginning to match the bias weight).
+* `z1` is the output vector of the hidden layer of size $(1\times (M+1))$ (needed for backprop).
 * `y` is the output of the neural network of size $(1\times K)$.
 
 Example inputs and outputs:
@@ -145,11 +145,11 @@ y, dE1, dE2 = backprop(x, target_y, M, K, W1, W2)
 $$
 \text{yellow} = \begin{bmatrix}1\\0\\0\end{bmatrix}, \text{green} = \begin{bmatrix}0\\1\\0\end{bmatrix}, \text{blue} = \begin{bmatrix}0\\0\\1\end{bmatrix},
 $$
->*But why would we choose to do this instead of just using $0, 1, 2$ ? The reason is simple, using ordinal categorical label injects assumptions into the network that we want to avoid. The network might assume that `yellow: 0` is more different from `blue: 1` than `green: 2` because the difference in the labels is greater. We want our neural networks to output* **probability distributions over classes** *meaning that the output of the network might look something like:*
+>*But why would we choose to do this instead of just using $0, 1, 2$ ? The reason is simple, using ordinal categorical label injects assumptions into the network that we want to avoid. The network might assume that `yellow: 0` is more different from `blue: 2` than `green: 1` because the difference in the labels is greater. We want our neural networks to output* **probability distributions over classes** *meaning that the output of the network might look something like:*
 $$
 \text{NN}(x) = \begin{bmatrix}0.32\\0.03\\0.65\end{bmatrix}
 $$
-> *From this we can directly make a prediction, `0.65` is highest so the model is most confident in that the input feature corresponds to the `green` label*
+> *From this we can directly make a prediction, `0.65` is highest so the model is most confident in that the input feature corresponds to the `blue` label*
 
 
 ## Section 2 - Training the Network
