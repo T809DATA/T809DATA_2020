@@ -92,7 +92,7 @@ The inner working of your `backprop` function should follow this order of action
 2. calculate $\delta_k = y_k - target\_y_k$
 3. calculate $\delta_j = (\frac{d}{da}\sigma(a1_j)) \sum_{k} w_{k,j+1}\delta_k$ (the `+1` is because of the bias weights)
 4. initialize `dE1` and `dE1` as zero-matrices with the same shape as `W1` and `W2`
-5. calculate `dE1_{j,i} = \delta_j z0_i` and `dE2_{k,j} = \delta_k z1_j`
+5. calculate `dE1_{i,j} = \delta_j z0_i` and `dE2_{j,k} = \delta_k z1_j`
 
 Example inputs and outputs:
 
