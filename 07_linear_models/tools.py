@@ -28,6 +28,7 @@ def split_train_test(
     where the number of items in the training set is according
     to the given train_ratio
     '''
+    np.random.seed(42)
     p = np.random.permutation(features.shape[0])
     features = features[p]
     targets = targets[p]
