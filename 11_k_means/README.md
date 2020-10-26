@@ -19,12 +19,16 @@ The K-means algorithm has the following steps:
     $$
         J  = \sum_{n=1}^N \sum_{k=1}^K r_{nk} ||x_n - \mu_k ||^2
     $$
-   our goal is to find values for all $r_{nk}$ and all $\mu_k$ (our parameters) to minimize the value of $J$.
+   our goal is to find values for all $r_{nk}$ and all $\mu_k$ (our parameters) to minimize the value of $J$.  
+   Here, we will be using the average distance from the points to their cluster means as the objective value (let's call it $\hat{J}$).
+   $$
+   \hat{J} = \frac{1}{N}\sum_{n=1}^N \sum_{k=1}^K r_{nk} || x_n - \mu_k ||
+   $$
 4. *M-step* We now recompute the value of the prototypes:
     $$
         \mu_k = \frac{\sum_n r_{nk} x_n}{\sum_n r_{nk}}
     $$
-5. Compare the current value of $J$ to the previous value of $J$. If the difference is above a certain threshold, we perform steps 2-4 again. Otherwise we continue up to a maximum number of iterations.
+5. Compare the current value of $\hat{J}$ to the previous value of $\hat{J}$. If the difference is above a certain threshold, we perform steps 2-4 again. Otherwise we continue up to a maximum number of iterations.
 
 We will now create the building blocks of the algorithm and then put them together.
 
@@ -70,7 +74,7 @@ determine_r(dist)
 ```
 
 ### Section 1.3
-Create a function `determine_j(r, dist)` that calculates the value of the objective function, $J$, given arrays of indicators and distances.
+Create a function `determine_j(r, dist)` that calculates the value of the objective function, $\hat{J}$, given arrays of indicators and distances.  
 
 Example inputs and outputs:
 ```
@@ -112,12 +116,12 @@ update_Mu(Mu, X, R)
 ### Section 1.5
 Now we are ready to combine our units into a single function `k_means(X, k, num_its)`. You will have to add a bit more code to the mix and some of it is supplied to you in the template.
 
-You should run the algorithm `num_its` times. For each iteration we collect the value of the objective function, $J$.
+You should run the algorithm `num_its` times. For each iteration we collect the value of the objective function, $\hat{J}$.
 
 `k_means` should return:
 * `Mu`: The last values of the prototypes
 * `R`: The last value of the indicators
-* `Js`: List of $J$ values for each iteration of the algorithm.
+* `Js`: List of $\hat{J}$ values for each iteration of the algorithm.
 
 Example input and output:
 ```
@@ -148,7 +152,7 @@ Create this plot and submit it as `1_6_1.png`.
 
 
 ### Section 1.7
-Now create a plot of four experiments for $k \in (2, 3 , 5, 10)$. Plot 4 graphs of J as a function of number of iterations onto the sample figure.
+Now create a plot of four experiments for $k \in (2, 3 , 5, 10)$. Plot 4 graphs of $\hat{J}$ as a function of number of iterations onto the sample figure.
 
 This plot should look like the one above, but with for graphs.
 
