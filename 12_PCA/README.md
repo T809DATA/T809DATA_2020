@@ -23,7 +23,7 @@ Example input and output:
 ```
 
 ### Section 1.2
-Finish the function `_scatter_standardized_dims(X, i, j)` that takes in an array $X$ of shape $[N \times f]$ and plots a scatter plot for all points
+Finish the function `scatter_standardized_dims(X, i, j)` that takes in an array $X$ of shape $[N \times f]$ and plots a scatter plot for all points
 $$
 (\hat{X}_{ni}, \hat{X}_{nj}), \quad n = 1,2,...,N
 $$
@@ -36,7 +36,7 @@ X = np.array([
     [4, 5, 5, 4],
     [2, 2, 2, 2],
     [8, 6, 4, 2]])
-scatter_dims(X, 0, 2)
+scatter_standardized_dims(X, 0, 2)
 plt.show()
 ```
 This results in the following boring plot
@@ -52,7 +52,7 @@ We will create a scatter for every feature dimension against the first one. Each
 1. scatter dimension 1 against dimension 1
 2. scatter dimension 1 against dimension 2
 3. ...
-4. scatter dimension 1 against dimension 30
+30. scatter dimension 1 against dimension 30
 
 We will be using `plt.subplot` for this. Your plot grid should have 5 rows and 6 columns. To plot the i-th subplot in a 5-by-6 grid we call `plt.subplot(5, 6, i)` just before we draw the plot. You can use `_scatter_cancer` for this.
 
