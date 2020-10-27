@@ -118,7 +118,7 @@ def k_means_predict(
     t: np.ndarray,
     classes: list,
     num_its: int
-) -> Union[float, np.ndarray]:
+) -> Union[np.ndarray]:
     '''
     Determine the accuracy and confusion matrix
     of predictions made by k_means on a dataset
@@ -132,9 +132,7 @@ def k_means_predict(
     * num_its (int): Number of k_means iterations
 
     Returns:
-    * accuracy (float): The accuracy of the prediction
-    * confusion_matrix (np.ndarray): The confusion matrix
-        of the prediction and the ground truth labels.
+    * the predictions (list)
     '''
     ...
 
